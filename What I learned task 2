@@ -1,0 +1,143 @@
+Penetration Testing Report
+Footprinting & Network Scanning Phases
+ Project Overview
+This Week 2 project focused on two practical cybersecurity activities:
+- Web-domain footprinting and reconnaissance using Kali Linux.- Network discovery and scanning using Zenmap.
+The purpose of the project was to learn how cybersecurity professionals collect information about a target and identify active devices on an authorized network.
+The activities were performed only on systems where I had permission or systems that I own.
+---
+ Project Information
+Component| InformationPentester Name| Ngaakudzwe Salem NyanduwaProgram| Cybersecurity ProfessionalBatch| B083C – NetworkwalksDate| 18 September 2026Modules Completed| W2-PM1 – Multiple Kali Tools| W2-PM5 – Zenmap ScanningClient/Target| Networkwalks and my own local LAN networkPermission| Yes – written permission securedPhases Covered| Phase 1: Reconnaissance & Footprinting| Phase 2: Scanning & Network Discovery| Phases 3–5: In Progress
+---
+ Liability Disclaimer
+All activities in this project were performed only on systems and devices that I had permission to test or that I owned.
+The information in this report is for cybersecurity education and research purposes only.
+Cybersecurity tools should not be used to access or attack systems without permission. Unauthorized access can result in legal problems, financial penalties, job loss, or other consequences.
+---
+ 1. Introduction
+This Week 2 project helped me learn about two important parts of penetration testing: footprinting and network scanning.
+For the footprinting activity, I used Kali Linux tools to collect publicly available information about the Networkwalks website.
+For the network scanning activity, I used Zenmap on a Windows computer to discover active devices on my own local network.
+The exercises helped me understand how information can be collected before carrying out further security testing.
+---
+ 2. Tools Used
+Tool| PurposeKali Linux| Operating system used for reconnaissanceWindows| Operating system used for network scanningWHOIS| Used to find domain registration informationWhatWeb| Used to identify website technologiesNslookup| Used to find the IP address of a domainCurl| Used to check HTTP response headersWafw00f| Used to identify Web Application Firewall technologyDNSRecon| Used to collect DNS recordsZenmap| Used to discover active devices on the networkWindows CMD| Used to find local IP and MAC address information
+---
+ 3. Activities Performed
+3.1 Footprinting and Reconnaissance
+I performed authorized reconnaissance on the networkwalks.com domain using six Kali Linux tools.
+Each tool provided different information about the website and its infrastructure.
+Step 1: WHOIS
+I started with WHOIS to collect publicly available domain registration information.
+It helped me understand basic information about the domain and identify its name servers.
+Step 2: WhatWeb
+I used WhatWeb to identify the technologies used by the website.
+The results identified:
+- WordPress 7.0.4- WP Download Manager 3.3.58- Other technical information related to the website
+This information can help a security professional understand what technologies may need to be reviewed during authorized testing.
+Step 3: Nslookup
+I used Nslookup to resolve the domain name and find its associated IP address.
+The observed IP address was:
+192.232.216.135
+Step 4: Curl
+I used the following command to check the HTTP response headers:
+curl -I networkwalks.com
+The response provided additional information about the web application.
+It also showed the WordPress REST API endpoint:
+/wp-json/
+Step 5: Wafw00f
+I used Wafw00f to check whether a Web Application Firewall was being used.
+The result identified:
+ModSecurity (SpiderLabs)
+This showed that the website uses a WAF as part of its security setup.
+Step 6: DNSRecon
+Finally, I used DNSRecon to collect publicly available DNS information.
+The results included information about:
+- Name servers- Mail servers- SPF/TXT records- Service records- DNS software
+This helped me understand how DNS information can provide additional details about an organization's infrastructure.
+---
+ 3.2 Network Scanning with Zenmap
+The second activity involved scanning my own local network using Zenmap.
+The purpose was to:
+- Identify my local IP address.- Identify the network subnet.- Find active devices.- Identify IP addresses.- Identify MAC addresses.- Create a network topology.
+Step 1: Find the Local Network
+I used the Windows "ipconfig" command to check my local IP address and network information.
+The subnet was then entered into Zenmap.
+Step 2: Perform a Ping Scan
+I used Zenmap's Ping Scan option to identify active devices on the authorized local network.
+The practical example showed the following live hosts:
+192.168.10.112192.168.10.109192.168.10.109
+The example also showed three MAC addresses.
+Note: The example IP addresses and MAC addresses should be replaced with my own verified scan results and screenshots before final submission.
+Step 3: Create Network Topology
+After completing the scan, I opened the Topology section in Zenmap.
+I enabled the legend and saved the network topology as a PDF as required by the practical exercise.
+---
+ 4. Risk Analysis / Impact
+The activities identified several areas that could require further security review.
+#| Risk / Finding| Observation| Potential Impact| Risk1| Web technology information exposed| WhatWeb identified WordPress and WP Download Manager| Attackers may use technology information to identify software that needs security review| Medium2| Server IP address identifiable| Nslookup identified 192.232.216.135| Provides information about the location of the web service| Low3| HTTP technical information exposed| Curl showed HTTP headers and "/wp-json/"| May help with technology fingerprinting and further enumeration| Low4| WAF technology identifiable| Wafw00f identified ModSecurity (SpiderLabs)| Provides information about the web application's security setup| Low5| DNS infrastructure information exposed| DNSRecon identified DNS, mail and service records| Can help build a wider picture of the organization's infrastructure| Medium6| Multiple live hosts visible| Zenmap identified live hosts in the example network| Unknown devices may be present on a network| Medium
+ Important Note
+The risks above are observations, not confirmed vulnerabilities.
+The exercises focused mainly on information gathering and network discovery.
+No exploitation or vulnerability validation was performed during these activities.
+For example, finding a software version, IP address, or DNS record does not automatically mean that the system is vulnerable. Additional authorized testing would be required to confirm an actual vulnerability.
+---
+ 5. Recommendations
+Based on the findings from the exercises, I recommend the following:
+1. Review Publicly Available Information
+Organizations should regularly check what information about their websites, technologies, CMS platforms, and plugins is publicly visible.
+2. Keep Software Updated
+CMS platforms, plugins, and other web technologies should be regularly updated and checked against current security advisories.
+3. Review HTTP Headers
+HTTP response headers should be reviewed to make sure unnecessary technical information is not being exposed.
+4. Review DNS Records
+DNS records should be checked regularly to make sure only necessary information and services are publicly available.
+5. Configure and Monitor the WAF
+The Web Application Firewall, such as ModSecurity, should remain enabled and properly configured.
+It should also be monitored and updated when necessary.
+6. Perform Regular Network Discovery
+Organizations should regularly scan their own internal networks to identify active devices.
+7. Investigate Unknown Devices
+Any unexpected device found during a network scan should be investigated and verified.
+8. Keep Network Documentation Updated
+Network diagrams and device information should be documented and updated regularly.
+9. Always Get Authorization
+Reconnaissance and scanning should only be performed on systems and networks where proper authorization has been provided.
+---
+ 6. What I Learned
+This project helped me understand several important cybersecurity concepts.
+1. Footprinting
+I learned that footprinting can be used to collect publicly available information about a website or organization.
+2. Using Kali Linux Tools
+I learned how different tools provide different types of information.
+For example:
+- WHOIS provides domain information.- WhatWeb identifies website technologies.- Nslookup finds domain IP addresses.- Curl checks HTTP headers.- Wafw00f identifies WAF technology.- DNSRecon collects DNS information.
+3. Network Scanning
+I learned how Zenmap can be used to discover active devices on a network.
+4. IP and MAC Addresses
+I learned how IP addresses and MAC addresses can help identify devices on a local network.
+5. Network Topology
+I learned how to create a basic network topology using Zenmap.
+6. Security Documentation
+I learned that proper cybersecurity documentation is important.
+A good report should explain:
+- What was tested.- Which tools were used.- What was discovered.- What the findings mean.- What security improvements can be made.
+7. Ethical and Authorized Testing
+I also learned that reconnaissance and scanning should only be performed within an authorized scope.
+---
+ 7. Security and Ethical Use
+This project was completed for cybersecurity education and authorized security testing.
+I should only use penetration testing tools and techniques on systems that I own or have permission to test.
+Unauthorized scanning, access, or exploitation can have serious legal and security consequences.
+---
+ 8. Conclusion
+During Week 2 of my Cybersecurity & Ethical Hacking internship at Networkwalks, I completed practical exercises covering web footprinting, reconnaissance, and local network scanning.
+During the footprinting exercise, I used six Kali Linux tools to collect information about the Networkwalks domain. I learned how WHOIS, WhatWeb, Nslookup, Curl, Wafw00f, and DNSRecon can each provide different types of information.
+I also used Zenmap to scan my local network and identify active devices. I learned how to check IP and MAC addresses and create a basic network topology.
+These exercises showed me that information gathering is an important part of penetration testing. A security professional can learn a lot about an environment before performing any further testing.
+I also learned the importance of documenting cybersecurity activities clearly. A good report should explain the tools used, findings, evidence, risks, and recommendations.
+Most importantly, I learned that reconnaissance and scanning must always be performed within an authorized scope.
+The activities in this report were completed as part of my assigned educational internship exercises at Networkwalks.
+---
+ Author
+Ngaakudzwe Salem NyanduwaCybersecurity Professional – B083CNetworkwalks
